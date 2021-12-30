@@ -51,22 +51,30 @@ class LoginScreenViewController: UIViewController {
         //Mark:- This is only to insert test Email/Password when run on a new device.
         let testAcct = InsertTestData()
         testAcct.checkTestDataExists()
-         
+        
+        self.view.frame.origin.y = 0
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginScreenViewController.keyboardDidShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         let tapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
         
-        
-    
-
-        
         initialization()
     }
     
-    @objc private func hideKeyboard() {
+    @objc private func hideKeyboard(notification: NSNotification) {
+        self.view.frame.origin.y = 0
         self.view.endEditing(true)
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else
+        {
+            return
+        }
+        self.view.frame.origin.y = 0 - keyboardSize.height
     }
     
     private func initialization() {
@@ -109,9 +117,6 @@ class LoginScreenViewController: UIViewController {
             })
             .store(in: &cancellableSet)
     }
-    
-
-    
 }
 
 extension LoginScreenViewController {

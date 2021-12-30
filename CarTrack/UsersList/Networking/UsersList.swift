@@ -11,7 +11,6 @@ import UIKit
 protocol APIManagerService {
     func fetchUsers<T: Decodable>(url: URL, completion: @escaping (Result<[T], Error>) -> Void)
 }
- 
 
 class APIManager: APIManagerService {
 

@@ -32,6 +32,7 @@ final class CountryListScreenView: UIView {
                 addSubview($0)
                 $0.translatesAutoresizingMaskIntoConstraints = false
             }
+        countryTable.accessibilityIdentifier = "countryTable"
     }
     
     private func setUpConstraints() {

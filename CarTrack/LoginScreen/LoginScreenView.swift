@@ -90,16 +90,19 @@ final class LoginScreenView: UIView {
             loginTextField.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
             loginTextField.backgroundColor = UIColor.init(colorWithHexValue: 0x121212)
             loginTextField.textColor = UIColor.lightGray
+            loginTextField.accessibilityIdentifier = "loginTextField"
             
             passwordTextField.addPadding(padding: .left(10))
             passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
             passwordTextField.backgroundColor = UIColor.init(colorWithHexValue: 0x121212)
             passwordTextField.isSecureTextEntry = true
             passwordTextField.textColor = UIColor.lightGray
+            passwordTextField.accessibilityIdentifier = "passwordTextField"
             
             toggleSecureEntry = UIButton(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
             toggleSecureEntry.tintColor = UIColor.lightGray
             toggleSecureEntry.setImage(UIImage(systemName: "eye.slash"), for: UIControl.State.normal)
+            toggleSecureEntry.accessibilityIdentifier = "toggleSecureEntry"
             
             passwordTextField.rightView = toggleSecureEntry
             passwordTextField.rightViewMode = .always
@@ -109,15 +112,19 @@ final class LoginScreenView: UIView {
             selectCountryButton.setTitleColor(.lightGray, for: UIControl.State.normal)
             selectCountryButton.contentHorizontalAlignment = .left
             selectCountryButton.titleEdgeInsets.left = 10
+            selectCountryButton.accessibilityIdentifier = "selectCountryButton"
    
             stayLoggedButton.tintColor = UIColor.lightGray
-            stayLoggedButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: UIControl.State.normal)
+            stayLoggedButton.setImage(UIImage(systemName: "square"), for: UIControl.State.normal)
+            stayLoggedButton.accessibilityIdentifier = "stayLoggedButton"
             
             stayLoggedLabel.text = "Stay Logged In"
             stayLoggedLabel.backgroundColor = UIColor.black
             stayLoggedLabel.textColor = UIColor.lightGray
             stayLoggedLabel.font = UIFont.systemFont(ofSize: 14)
+            stayLoggedLabel.accessibilityIdentifier = "stayLoggedLabel"
             
             loginButton.setTitle("Log In", for: UIControl.State.normal)
+            loginButton.accessibilityIdentifier = "loginButton"
         }
 }

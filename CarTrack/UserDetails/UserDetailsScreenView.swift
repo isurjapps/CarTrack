@@ -19,7 +19,7 @@ final class UserDetailsScreenView: UIView {
 
         init() {
             super.init(frame: .zero)
-            
+    
             addSubviews()
             setUpConstraints()
             setUpViews()
@@ -79,5 +79,9 @@ final class UserDetailsScreenView: UIView {
             addressLabel.numberOfLines = 0
             addressLabel.lineBreakMode = .byWordWrapping
             
+            userNameLabel.textColor = UIColor.black
+            emailLabel.textColor = UIColor.black
+            websiteLabel.textColor = UIColor.black
+            addressLabel.textColor = UIColor.black
         }
 }

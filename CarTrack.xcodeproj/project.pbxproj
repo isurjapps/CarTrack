@@ -12,6 +12,8 @@
 		DB68A180264CAB65005545F4 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68A17F264CAB65005545F4 /* UserDefaults.swift */; };
 		DB68A182264CC967005545F4 /* InsertTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68A181264CC967005545F4 /* InsertTestData.swift */; };
 		DB78CD27264C354A0023022D /* UserDetailsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB78CD26264C354A0023022D /* UserDetailsScreenViewModel.swift */; };
+		DB8AA432277D53B300FACE38 /* CountryListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC30582264A4540001A1E7E /* CountryListScreenView.swift */; };
+		DB8AA43B277DB8C200FACE38 /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC305CE264B7E90001A1E7E /* UsersList.swift */; };
 		DBC080362646E18A00EA5D8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC080352646E18A00EA5D8E /* AppDelegate.swift */; };
 		DBC080382646E18A00EA5D8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC080372646E18A00EA5D8E /* SceneDelegate.swift */; };
 		DBC080402646E18A00EA5D8E /* CarTrack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DBC0803E2646E18A00EA5D8E /* CarTrack.xcdatamodeld */; };
@@ -134,6 +136,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		DB8AA438277DB85B00FACE38 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		DBC080292646E18A00EA5D8E = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +196,7 @@
 		DBC080592646E18E00EA5D8E /* CarTrackUITests */ = {
 			isa = PBXGroup;
 			children = (
+				DB8AA438277DB85B00FACE38 /* Mocks */,
 				DBC0805A2646E18E00EA5D8E /* CarTrackUITests.swift */,
 				DBC0805C2646E18E00EA5D8E /* Info.plist */,
 			);
@@ -420,7 +430,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8AA43B277DB8C200FACE38 /* UsersList.swift in Sources */,
 				DBC0805B2646E18E00EA5D8E /* CarTrackUITests.swift in Sources */,
+				DB8AA432277D53B300FACE38 /* CountryListScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

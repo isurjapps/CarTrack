@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import CoreLocation
 
 class UsersListScreenViewController: UIViewController {
     
@@ -41,11 +42,10 @@ class UsersListScreenViewController: UIViewController {
         contentView.userListTable.dataSource = self
         
         title = "User's List"
-        let image = UIImage(systemName: "folder.circle")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(logoutSession))
+        let logoutIcon = UIImage(systemName: "folder.circle")
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.hidesBackButton = true 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: logoutIcon, style: .plain, target: self, action: #selector(logoutSession))
+        UIBarButtonItem.appearance().tintColor = UIColor.black
                     
         viewModel.fetchUser()
         observeViewModel()
@@ -86,6 +86,9 @@ extension UsersListScreenViewController: UITableViewDataSource, UITableViewDeleg
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         let modelUser = userList[indexPath.row]
         cell.textLabel?.text = modelUser.name
+        cell.backgroundColor = UIColor.white
+        cell.textLabel?.textColor = UIColor.black
+        cell.textLabel?.highlightedTextColor = UIColor.white
         return cell
     }
     

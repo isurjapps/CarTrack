@@ -29,21 +29,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             viewController = LoginScreenViewController()
         }
-                
-        let LoginScreenViewController = LoginScreenViewController()
-        
+
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = LoginScreenViewController
+        
+        let navigationVC = UINavigationController(rootViewController: viewController)
+        window.rootViewController = navigationVC
+        UIBarButtonItem.appearance().tintColor = UIColor.black
         self.window = window
         window.makeKeyAndVisible()
- /*
-        let LoginScreenViewController = LoginScreenViewController()
-        
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UINavigationController(rootViewController: LoginScreenViewController)
-        self.window = window
-        window.makeKeyAndVisible()
- */
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -24,7 +24,7 @@ final class InsertTestData {
             
             if self.users?.count == 0 {
                 let newUser = UserCredentials(context: context)
-                newUser.userName = "sincere@april.biz"
+                newUser.userName = "Abc@xyz.com"
                 newUser.password = "singapore21"
                 
                 do {

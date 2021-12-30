@@ -13,7 +13,7 @@ final class UsersListScreenViewModel {
     private let apiManager: APIManagerService
     
     var usersSubject = PassthroughSubject<[UsersList], Error>()
-    
+
     init(apiManager: APIManagerService) {
         self.apiManager = apiManager
     }

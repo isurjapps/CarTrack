@@ -7,11 +7,13 @@
 import Foundation
 import UIKit
 import MapKit
+import CoreLocation
 
-class UserDetailsScreenViewController: UIViewController {
+class UserDetailsScreenViewController: UIViewController, CLLocationManagerDelegate {
     
     private lazy var contentView = UserDetailsScreenView()
     private let viewModel:  UserDetailsScreenViewModel
+    private var locationManager: CLLocationManager!
 
     var selectedUser: UsersList!
     var latitude: Double = 0.0
@@ -37,10 +39,11 @@ class UserDetailsScreenViewController: UIViewController {
     
     private func initialization() {
         title = "User Details"
-        let image = UIImage(systemName: "folder.circle")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(logoutSession))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(gobackToList))
-        UIBarButtonItem.appearance().tintColor = UIColor.darkGray
+        let logoutIcon = UIImage(systemName: "folder.circle")
+        let backIcon = UIImage(systemName: "arrowshape.turn.up.backward.circle")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: logoutIcon, style: .plain, target: self, action: #selector(logoutSession))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .plain, target: self, action: #selector(gobackToList))
+        UIBarButtonItem.appearance().tintColor = UIColor.black
         
         let emailImg = NSTextAttachment()
         emailImg.image = UIImage(systemName: "envelope.circle")
@@ -48,8 +51,6 @@ class UserDetailsScreenViewController: UIViewController {
         fullEmailString.append(NSAttributedString(attachment: emailImg))
         fullEmailString.append(NSAttributedString(string: " " + selectedUser.email))
         contentView.emailLabel.attributedText = fullEmailString
-        
-        
         contentView.userNameLabel.text = selectedUser.name
         contentView.addressLabel.text = ((selectedUser.address?.street ?? "") + ", " + (selectedUser.address?.suite ?? "") + ", " + (selectedUser.address?.city ?? "")) + ", " + (selectedUser.address?.zipcode ?? "")
         
@@ -68,12 +69,17 @@ class UserDetailsScreenViewController: UIViewController {
             longitude = lng
         }
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        annotation.title = "Here"
-        contentView.userLocation.addAnnotation(annotation)
-        let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 2500, longitudinalMeters: 2500)
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
         contentView.userLocation.setRegion(region, animated: true)
+        
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        contentView.userLocation.addAnnotation(pin)         
     }
     
     @objc func logoutSession(){

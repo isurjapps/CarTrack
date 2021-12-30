@@ -51,7 +51,8 @@ final class UsersListScreenView: UIView {
     }
     
     private func setUpViews() {
-        backgroundColor = UIColor.white
+        userListView.backgroundColor = UIColor.white
+        userListTable.backgroundColor = UIColor.white
     }
 }
 
