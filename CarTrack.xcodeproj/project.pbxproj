@@ -136,13 +136,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		DB8AA438277DB85B00FACE38 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
 		DBC080292646E18A00EA5D8E = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +189,6 @@
 		DBC080592646E18E00EA5D8E /* CarTrackUITests */ = {
 			isa = PBXGroup;
 			children = (
-				DB8AA438277DB85B00FACE38 /* Mocks */,
 				DBC0805A2646E18E00EA5D8E /* CarTrackUITests.swift */,
 				DBC0805C2646E18E00EA5D8E /* Info.plist */,
 			);
